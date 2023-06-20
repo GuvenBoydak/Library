@@ -2,9 +2,9 @@
 {
     public class Book:BaseEntity
     {
-        public String Name { get; set; }
+        public string Name { get; set; }
 
-        public String ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         public bool IsItInLibrary { get; set; }
 
