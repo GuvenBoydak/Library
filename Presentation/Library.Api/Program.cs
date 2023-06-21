@@ -1,12 +1,21 @@
+using FluentValidation.AspNetCore;
+using Library.Api.Filters;
+using Library.Application;
+using Library.Application.Validations.User;
 using Library.Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+    {
+        options.Filters.Add<ValidatorFilterAttribute>();
+    })
+    .AddFluentValidation(configuration =>
+        configuration.RegisterValidatorsFromAssemblyContaining<RegisterUserCommandValidator>());
 
 builder.Services.AddPersistenceServices();
+builder.Services.AddApplicationServices();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
