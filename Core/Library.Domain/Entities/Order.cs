@@ -2,7 +2,7 @@
 
 public class Order : BaseEntity
 {
-    public DateTime RecivedDate { get; set; }
+    public DateTime ReceivedDate { get; set; }
     public DateTime ReturnDate { get; set; }
 
     public Guid BookId { get; set; }

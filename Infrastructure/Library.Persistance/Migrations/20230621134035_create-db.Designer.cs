@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Library.Persistance.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20230620115644_create-db")]
+    [Migration("20230621134035_create-db")]
     partial class createdb
     {
         /// <inheritdoc />
@@ -90,10 +90,7 @@ namespace Library.Persistance.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime>("RecivedDate")
+                    b.Property<DateTime>("ReceivedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("ReturnDate")

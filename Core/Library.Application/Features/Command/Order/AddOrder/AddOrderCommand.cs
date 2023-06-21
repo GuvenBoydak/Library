@@ -5,4 +5,4 @@ using MediatR;
 namespace Library.Application.Features.Command.Order.AddOrder;
 
 public record AddOrderCommand
-    (Guid BookId, Guid UserId, DateTime RecivedDate, DateTime ReturnDate) : IRequest<ResponseDto<OrderDto>>;
+    (Guid BookId, Guid UserId, DateTime ReceivedDate, DateTime ReturnDate) : IRequest<ResponseDto<OrderDto>>;

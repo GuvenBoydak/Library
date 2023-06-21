@@ -87,10 +87,7 @@ namespace Library.Persistance.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime>("RecivedDate")
+                    b.Property<DateTime>("ReceivedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("ReturnDate")

@@ -90,9 +90,8 @@ namespace Library.Persistance.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    RecivedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ReceivedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ReturnDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsCompleted = table.Column<bool>(type: "boolean", nullable: false),
                     BookId = table.Column<Guid>(type: "uuid", nullable: false),
                     UserId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
