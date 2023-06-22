@@ -4,4 +4,4 @@ using MediatR;
 
 namespace Library.Application.Features.Queries.Category.GetAllCategory;
 
-public record GetAllCategoryQuery : IRequest<ResponseDto<List<CategoryListDto>>>;
+public record GetAllCategoriesQuery : IRequest<ResponseDto<List<CategoryListDto>>>;

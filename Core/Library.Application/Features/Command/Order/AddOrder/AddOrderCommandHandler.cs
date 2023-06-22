@@ -26,6 +26,8 @@ public class AddOrderCommandHandler : IRequestHandler<AddOrderCommand, ResponseD
 
         var orderDto = _mapper.Map<Domain.Entities.Order, OrderDto>(await _orderRepository.AddAsync(order));
 
+        await _unitOfWork.SaveChanges();
+
         return ResponseDto<OrderDto>.Success(orderDto, 200);
     }
 }

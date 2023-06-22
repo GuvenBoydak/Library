@@ -15,8 +15,8 @@ public class UsersController : BaseController
         _mediator = mediator;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> GetByEmail([FromBody] GetByEmailQuery request)
+    [HttpGet("{Email}")]
+    public async Task<IActionResult> GetByEmail([FromRoute] GetByEmailQuery request)
     {
         var response = await _mediator.Send(request);
         return CustomActionResult(response);

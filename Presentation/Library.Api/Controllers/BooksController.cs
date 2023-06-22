@@ -17,7 +17,7 @@ public class BooksController : BaseController
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] GetAllBookQuery request)
+    public async Task<IActionResult> GetAll([FromQuery] GetAllBooksQuery request)
     {
         var response = await _mediator.Send(request);
         return CustomActionResult(response);
@@ -31,7 +31,7 @@ public class BooksController : BaseController
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> GetByIds([FromBody] GetByIdsBookQuery request)
+    public async Task<IActionResult> GetByIds([FromBody] GetByIdsBooksQuery request)
     {
         var response = await _mediator.Send(request);
         return CustomActionResult(response);
