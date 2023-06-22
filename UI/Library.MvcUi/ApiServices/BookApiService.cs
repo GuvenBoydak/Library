@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http.Headers;
+using Library.MvcUi.Helper;
 using Library.MvcUi.Models;
 using Library.MvcUi.Models.Book;
 using Newtonsoft.Json;
@@ -19,7 +20,7 @@ public class BookApiService
     {
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-        var response = await _httpClient.GetFromJsonAsync<ResponseDto<List<BookModel>>>("Books/GetAll");
+        var response = await _httpClient.GetFromJsonAsync<ResponseDto<List<BookModel>>>("Books");
 
         return response.Data;
     }
@@ -46,9 +47,18 @@ public class BookApiService
         return books.Data;
     }
 
-    public async Task<bool> AddAsync(string token, BookModel model)
+    public async Task<bool> AddAsync(string token, AddBookInput input)
     {
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+        var model = new BookModel
+        {
+            Name = input.Name,
+            CategoryId = input.CategoryId,
+            IsItInLibrary = input.IsItInLibrary,
+            WriterId = input.WriterId,
+            ImageUrl = $"https://localhost:7069/Uploads/Images/{FileHelper.Add(input.ImageUrl, "wwwroot\\Uploads\\")}"
+        };
 
         var response = await _httpClient.PostAsJsonAsync("Books", model);
 
