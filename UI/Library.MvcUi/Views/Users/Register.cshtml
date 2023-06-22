@@ -1,0 +1,44 @@
+﻿@model RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Yeni Kayıt</h5>
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <form asp-controller="Users" asp-action="Register" method="post">
+                    <div class="mb-3">
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input type="text" asp-for="FirstName" class="form-control">
+                        <span class="text-danger" asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="LastName" class="form-label"></label>
+                        <input type="text" asp-for="LastName" class="form-control">
+                        <span class="text-danger" asp-validation-for="LastName"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PhoneNumber" class="form-label"></label>
+                        <input type="number" asp-for="PhoneNumber" class="form-control">
+                        <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input type="email" asp-for="Email" class="form-control">
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input type="password" asp-for="Password" class="form-control">
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

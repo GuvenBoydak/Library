@@ -1,0 +1,60 @@
+﻿@model UserViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Kütüphaneden alınan kitaplar</h5>
+                @if (Model!=null)
+                {
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Resim</th>
+                                <th>Kitap ismi</th>
+                                <th>Teslim Alınan Tarih</th>
+                                <th>Teslim Edilecek Tarih</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OrderModels)
+                            {
+                                <tr>
+                                    <td>
+                                        <img style="width:72px;" src="
+                                        @foreach (var book in Model.BookModels)
+                                        {
+                                            if (book.Id == item.BookId)
+                                                @book.ImageUrl
+                                        } " class="img-thumbnail" />
+                                    </td>
+                                    <td>
+                                        @foreach (var book in Model.BookModels)
+                                        {
+                                            if (book.Id == item.BookId)
+                                                @book.Name
+                                        }
+                                    </td>
+                                    <td>@item.ReceivedDate</td>
+                                    <td>@item.ReturnDate</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        Kayıt bulunamadı
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
