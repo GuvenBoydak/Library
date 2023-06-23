@@ -1,0 +1,69 @@
+﻿@model BookViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    var count = 0;
+}
+
+<a asp-controller="Books" asp-action="Add" class="btn btn-primary mb-3">Kitap Ekle</a>
+
+
+@if (Model != null)
+{
+    @foreach (var book in Model.BookModels)
+    {
+        count++;
+        if (count == 1 || (count % 3 == 1))
+        {
+            @Html.Raw("<div class='row row-cols-1 row-cols-md-3 g-4 mb-2' >")
+        }
+        <div class="col">
+            <div class="card">
+                <img src="@book.ImageUrl" class="card-img-top" width="400" height="250">
+                <div class="card-body">
+                    <div class="badge bg-light text-dark">
+                        <h5>Kitap İsmi: <span class="badge bg-light text-dark" style="font-size: 20px;">@book.Name</span></h5>
+                    </div>
+                    <div class="badge bg-warning" style="margin-left: 40px">
+                        @foreach (var writer in Model.WriterModels)
+                        {
+                            if (writer.Id == book.WriterId)
+                            {
+                                <h6>Yazar: <span class="badge bg-secondary" style="font-size: 20px;">@writer.FirstName @writer.LastName</span></h6>
+                            }
+                        }
+                    </div>
+                    <div class="badge bg-warning">
+                        @foreach (var category in Model.CategoryModels)
+                        {
+                            if (category.Id == book.CategoryId)
+                            {
+                                <h6>Kategori : <span class="badge bg-secondary" style="font-size: 20px;">@category.Name</span></h6>
+                            }
+                        }
+                    </div>
+                    <h4 class="text-black">
+                        @if (@book.IsItInLibrary)
+                        {
+                            <td>Kitap Nerede : Kütüphanede </td>
+                        }
+                        else
+                        {
+                            <td>Kitap Nerede :Kütüphanede Degil</td>
+                        }
+                    </h4>
+
+                    <div>
+                        <a asp-controller="Home" asp-action="Detail" class="btn btn-success" asp-route-id="">Detay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        if (count % 3 == 0)
+        {
+            @Html.Raw("</div>")
+        }
+    }
+}
+
