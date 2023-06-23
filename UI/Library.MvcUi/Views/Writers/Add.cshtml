@@ -1,0 +1,30 @@
+﻿@model AddWriterInput
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="Add" asp-controller="Writers" method="post">
+                        <div class="mb-3">
+                            <label> Yazar İsmi</label>
+                            <input type="text" asp-for="FirstName" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label> Yazar Soyisim</label>
+                            <input type="text" asp-for="LastName" class="form-control" />
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Ekle</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

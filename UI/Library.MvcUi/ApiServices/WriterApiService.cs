@@ -37,7 +37,7 @@ public class WriterApiService
         return writers.Data;
     }
 
-    public async Task<bool> AddAsync(string token, WriterModel model)
+    public async Task<bool> AddAsync(string token, AddWriterInput model)
     {
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
