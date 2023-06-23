@@ -46,7 +46,7 @@ public class CategoryApiService
         return categories.Data;
     }
 
-    public async Task<bool> AddAsync(string token, CategoryModel model)
+    public async Task<bool> AddAsync(string token, AddCategoryInput model)
     {
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 

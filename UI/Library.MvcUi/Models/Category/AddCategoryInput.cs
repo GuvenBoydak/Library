@@ -1,7 +1,6 @@
 ﻿namespace Library.MvcUi.Models.Category;
 
-public class CategoryModel
+public class AddCategoryInput
 {
-    public Guid Id { get; set; }
     public string Name { get; set; }
 }
