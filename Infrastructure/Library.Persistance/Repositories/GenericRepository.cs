@@ -47,6 +47,11 @@ public class GenericRepository<T> : IRepository<T> where T : BaseEntity
         return await _dbSet.Where(filter).ToListAsync();
     }
 
+    public void Update(T model)
+    {
+        _dbSet.Update(model);
+    }
+
     public IQueryable<T> Where(Expression<Func<T, bool>> filter)
     {
         return _dbSet.Where(filter);
