@@ -2,9 +2,11 @@
 using Library.Application.Features.Queries.Writer.GetAllWriters;
 using Library.Application.Features.Queries.Writer.GetByIdsWriters;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Api.Controllers;
+
 
 public class WritersController : BaseController
 {
@@ -22,6 +24,7 @@ public class WritersController : BaseController
         return CustomActionResult(response);
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Add([FromBody] AddWriterCommand request)
     {
@@ -29,6 +32,7 @@ public class WritersController : BaseController
         return CustomActionResult(response);
     }
 
+    [Authorize]
     [HttpPost("[action]")]
     public async Task<IActionResult> GetByIds([FromBody] GetByIdsWritersQuery request)
     {

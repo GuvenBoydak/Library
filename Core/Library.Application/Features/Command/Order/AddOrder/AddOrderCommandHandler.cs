@@ -25,6 +25,8 @@ public class AddOrderCommandHandler : IRequestHandler<AddOrderCommand, ResponseD
     public async Task<ResponseDto<OrderDto>> Handle(AddOrderCommand request, CancellationToken cancellationToken)
     {
         var order = _mapper.Map<AddOrderCommand, Domain.Entities.Order>(request);
+        order.ReceivedDate = request.ReceivedDate.ToUniversalTime();
+        order.ReturnDate = request.ReturnDate.ToUniversalTime();
 
         var orderDto = _mapper.Map<Domain.Entities.Order, OrderDto>(await _orderRepository.AddAsync(order));
 

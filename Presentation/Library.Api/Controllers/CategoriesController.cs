@@ -3,6 +3,7 @@ using Library.Application.Features.Queries.Category.GetAllCategory;
 using Library.Application.Features.Queries.Category.GetByIdCategory;
 using Library.Application.Features.Queries.Category.GetByIdsCategories;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Api.Controllers;
@@ -23,6 +24,7 @@ public class CategoriesController : BaseController
         return CustomActionResult(response);
     }
 
+    [Authorize]
     [HttpGet("[action]/{Id:guid}")]
     public async Task<IActionResult> GetById([FromRoute]GetByIdCategoryQuery request)
     {
@@ -30,6 +32,7 @@ public class CategoriesController : BaseController
         return CustomActionResult(response);
     }
 
+    [Authorize]
     [HttpPost("[action]")]
     public async Task<IActionResult> GetByIds([FromBody]GetByIdsCategoriesQuery request)
     {
@@ -37,6 +40,7 @@ public class CategoriesController : BaseController
         return CustomActionResult(response);
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Add([FromBody]AddCategoryCommand request)
     {

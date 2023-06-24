@@ -1,5 +1,6 @@
 ﻿using Library.Application.Features.Command.User.LoginUser;
 using Library.Application.Features.Command.User.RegisterUser;
+using Library.Application.Features.Queries.User.GetAllUsers;
 using Library.Application.Features.Queries.User.GetByEmail;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,13 @@ public class UsersController : BaseController
     public UsersController(IMediator mediator)
     {
         _mediator = mediator;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll([FromQuery] GetAllUsersQuery request)
+    {
+        var response = await _mediator.Send(request);
+        return CustomActionResult(response);
     }
 
     [HttpGet("{Email}")]

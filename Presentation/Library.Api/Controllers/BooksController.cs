@@ -3,9 +3,11 @@ using Library.Application.Features.Queries.Book.GetAllBook;
 using Library.Application.Features.Queries.Book.GetByIdBook;
 using Library.Application.Features.Queries.Book.GetByIdsBook;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Api.Controllers;
+
 
 public class BooksController : BaseController
 {
@@ -23,6 +25,7 @@ public class BooksController : BaseController
         return CustomActionResult(response);
     }
 
+    [Authorize]
     [HttpGet("[action]/{Id:guid}")]
     public async Task<IActionResult> GetById([FromRoute] GetByIdBookQuery request)
     {
@@ -30,6 +33,7 @@ public class BooksController : BaseController
         return CustomActionResult(response);
     }
 
+    [Authorize]
     [HttpPost("[action]")]
     public async Task<IActionResult> GetByIds([FromBody] GetByIdsBooksQuery request)
     {
@@ -37,6 +41,7 @@ public class BooksController : BaseController
         return CustomActionResult(response);
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Add([FromBody] AddBookCommand request)
     {
