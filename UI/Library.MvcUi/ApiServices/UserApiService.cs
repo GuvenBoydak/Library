@@ -14,6 +14,14 @@ public class UserApiService
         _httpClient = httpClient;
     }
 
+    public async Task<List<UserModel>> GetAllAsync(string token)
+    {
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+        var response = await _httpClient.GetFromJsonAsync<ResponseDto<List<UserModel>>>("Users");
+
+        return response.Data;
+    }
     public async Task<UserModel> GetByEmailAsync(string token, string email)
     {
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);

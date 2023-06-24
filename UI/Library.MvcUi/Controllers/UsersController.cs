@@ -8,6 +8,7 @@ using Library.MvcUi.Models.User;
 using Library.MvcUi.Models;
 using Library.MvcUi.ViewModels.User;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Library.MvcUi.Controllers;
 
@@ -24,6 +25,7 @@ public class UsersController : Controller
         _bookApiService = bookApiService;
     }
 
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> Index()
     {
