@@ -1,0 +1,43 @@
+﻿@model OrderViewModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="Add" asp-controller="Orders" method="post" >
+                        <div class="mb-3">
+                            <label> Aldigi Tarih</label>
+                            <input type="datetime-local" asp-for="AddOrderInput.ReceivedDate" class="form-control" />
+                            <span asp-validation-for="AddOrderInput.ReceivedDate" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label> Geri verilecek Tarih</label>
+                            <input type="datetime-local" asp-for="AddOrderInput.ReturnDate" class="form-control" />
+                            <span asp-validation-for="AddOrderInput.ReturnDate" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label> Kitap </label>
+                            <select asp-for="AddOrderInput.BookId" asp-items="@ViewBag.book" class="form-control"></select>
+                        </div>
+                        <div class="mb-3">
+                            <label> Kullanici </label>
+                            <select asp-for="AddOrderInput.UserId" asp-items="@(new SelectList(Model.UserModels,"Id","FullName"))" class="form-control">
+                                <option selected="selected" value="1">Please select</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Ekle</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -13,6 +13,15 @@ public class OrderApiService
         _httpClient = httpClient;
     }
 
+    public async Task<List<OrderModel>> GetAllAsync( string token)
+    {
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+        var responseDto = await _httpClient.GetFromJsonAsync<ResponseDto<List<OrderModel>>>("Orders");
+
+        return responseDto.Data;
+    }
+
     public async Task<List<OrderModel>> GetOrdersByUserIdAsync(Guid id, string token)
     {
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -22,7 +31,7 @@ public class OrderApiService
         return responseDto.Data;
     }
 
-    public async Task<bool> AddAsync(string token, OrderModel model)
+    public async Task<bool> AddAsync(string token, AddOrderInput model)
     {
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
