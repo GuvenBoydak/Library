@@ -55,6 +55,7 @@ public class BookApiService
         {
             Name = input.Name,
             CategoryId = input.CategoryId,
+            IsItInLibrary = input.IsItInLibrary,
             WriterId = input.WriterId,
             ImageUrl = $"https://localhost:7241/Uploads/{FileHelper.Add(input.ImageUrl, "wwwroot\\Uploads\\")}"
         };

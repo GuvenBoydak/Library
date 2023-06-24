@@ -1,40 +1,41 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Library.MvcUi</title>
     <link href="~/lib/bootstrap-5.0/css/bootstrap.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-5.0/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-5.0/css/bootstrap.rtl.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-5.0/css/bootstrap.rtl.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/Library.MvcUi.styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Library.MvcUi.styles.css" asp-append-version="true" />
 </head>
 <body>
-<header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="d-grid gap-2 col-6 mx-auto">
+    <header>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <form class="container-fluid justify-content-center">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <a class="btn btn-outline-info" type="button" href="/Users/LogOut">Log Out</a>
+                    <a class="btn btn-sm btn-outline-secondary" asp-controller="Users" asp-action="Index">Profil</a>
+                    <a class="btn btn-sm btn-outline-secondary" asp-controller="Users" asp-action="Logout" style="margin-left:15px">Çıkış Yap</a>
                 }
                 else
                 {
-                    <a class="btn btn-outline-info" asp-controller="Users" asp-action="Login">Giris Yap</a>
+                    <a class="btn btn-sm btn-outline-secondary" asp-controller="Users" asp-action="Login" style="text-align: center">Giris Yap</a>
                 }
-            </div>
+            </form>
         </nav>
-</header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
-
-<footer class="border-top footer text-muted">
+    </header>
     <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+        </div>
     </footer>
 
     <script src="~/lib/bootstrap-5.0/js/bootstrap.bundle.js"></script>
@@ -43,8 +44,7 @@
     <script src="~/lib/bootstrap-5.0/js/bootstrap.esm.min.js"></script>
     <script src="~/lib/bootstrap-5.0/js/bootstrap.js"></script>
     <script src="~/lib/bootstrap-5.0/js/bootstrap.min.js"></script>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

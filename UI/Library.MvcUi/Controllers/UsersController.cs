@@ -97,7 +97,14 @@ public class UsersController : Controller
 
         ViewBag.Name = $"{user.FirstName} {user.LastName}";
 
-        return RedirectToAction("Index");
+        return RedirectToAction("Index","Books");
+    }
+
+    [HttpGet]
+    public IActionResult LogOut()
+    {
+        HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return RedirectToAction("Login");
     }
 
     [NonAction]
@@ -116,10 +123,5 @@ public class UsersController : Controller
         return result;
     }
 
-    [HttpGet]
-    public IActionResult LogOut()
-    {
-        HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("Login");
-    }
+
 }

@@ -4,8 +4,10 @@
     ViewData["Title"] = "Index";
     var count = 0;
 }
+<div class="d-grid gap-2" style="margin-bottom: 12px">
+    <a asp-controller="Books" asp-action="Add" class="btn btn-outline-primary">Kitap Ekle</a>
+</div>
 
-<a asp-controller="Books" asp-action="Add" class="btn btn-primary mb-3">Kitap Ekle</a>
 
 
 @if (Model != null)
@@ -24,24 +26,21 @@
                     <div class="badge bg-light text-dark">
                         <h5>Kitap İsmi: <span class="badge bg-light text-dark" style="font-size: 20px;">@book.Name</span></h5>
                     </div>
-                    <div class="badge bg-warning" style="margin-left: 40px">
-                        @foreach (var writer in Model.WriterModels)
+                    <br />
+                    @foreach (var category in Model.CategoryModels)
+                    {
+                        if (category.Id == book.CategoryId)
                         {
-                            if (writer.Id == book.WriterId)
-                            {
-                                <h6>Yazar: <span class="badge bg-secondary" style="font-size: 20px;">@writer.FirstName @writer.LastName</span></h6>
-                            }
+                            <h6 class="badge bg-info">Kategori : <span class="badge bg-light text-dark" style="font-size: 15px;">@category.Name</span></h6>
                         }
-                    </div>
-                    <div class="badge bg-warning">
-                        @foreach (var category in Model.CategoryModels)
+                    }
+                    @foreach (var writer in Model.WriterModels)
+                    {
+                        if (writer.Id == book.WriterId)
                         {
-                            if (category.Id == book.CategoryId)
-                            {
-                                <h6>Kategori : <span class="badge bg-secondary" style="font-size: 20px;">@category.Name</span></h6>
-                            }
+                            <h6 class="badge bg-info" style="margin-left: 30px">Yazar: <span class="badge bg-light text-dark" style="font-size: 15px;">@writer.FirstName @writer.LastName</span></h6>
                         }
-                    </div>
+                    }
                     <h4 class="text-black">
                         @if (@book.IsItInLibrary)
                         {
@@ -52,9 +51,31 @@
                             <td>Kitap Nerede :Kütüphanede Degil</td>
                         }
                     </h4>
+                    @if (!@book.IsItInLibrary)
+                    {
+                        @foreach (var order in Model.OrderModels)
+                        {
+                            if (order.BookId == book.Id)
+                            {
+                                @foreach (var user in Model.UserModels)
+                                {
+                                    if (user.Id == order.UserId)
+                                    {
+                                        <div>
+                                            <h6 class="badge bg-primary">Geri getirecegi tarih : <span class="badge bg-light text-dark" style="font-size: 10px;">@order.ReturnDate.ToShortDateString()</span></h6>
+                                            <h6 class="badge bg-primary">Kullanici : <span class="badge bg-light text-dark" style="font-size: 12px;">@user.FullName</span></h6>
+                                        </div>
 
-                    <div>
-                        <a asp-controller="Home" asp-action="Detail" class="btn btn-success" asp-route-id="">Detay</a>
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+
+                    <div class="d-grid gap-2">
+                        <a asp-controller="Orders" asp-action="Add" class="btn btn-outline-primary" asp-route-id="@book.Id">Ödünç ver</a>
                     </div>
                 </div>
             </div>

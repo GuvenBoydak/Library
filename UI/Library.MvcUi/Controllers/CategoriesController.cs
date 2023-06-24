@@ -1,9 +1,11 @@
 ﻿using Library.MvcUi.ApiServices;
 using Library.MvcUi.Models.Category;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.MvcUi.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly CategoryApiService _categoryApiService;

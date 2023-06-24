@@ -15,6 +15,7 @@
                             <label> Kitap İsmi</label>
                             <input type="text" asp-for="AddBookInput.Name" class="form-control" />
                         </div>
+                        <input type="hidden" asp-for="AddBookInput.IsItInLibrary"  value="true" class="form-control" />
                         <div class="mb-3">
                             <label> Kitap Resmi</label>
                             <input type="file" asp-for="AddBookInput.ImageUrl" class="form-control" />

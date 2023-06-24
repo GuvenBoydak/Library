@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using System.Collections.Generic;
+using System.Net.Http.Headers;
 using Library.MvcUi.Models;
 using Library.MvcUi.Models.Order;
 
@@ -13,7 +14,7 @@ public class OrderApiService
         _httpClient = httpClient;
     }
 
-    public async Task<List<OrderModel>> GetAllAsync( string token)
+    public async Task<List<OrderModel>> GetAllAsync(string token)
     {
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 

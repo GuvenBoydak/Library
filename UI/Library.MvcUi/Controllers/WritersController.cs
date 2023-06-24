@@ -1,9 +1,11 @@
 ﻿using Library.MvcUi.ApiServices;
 using Library.MvcUi.Models.Writer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.MvcUi.Controllers
 {
+    [Authorize]
     public class WritersController : Controller
     {
         private readonly WriterApiService _writerApiService;
