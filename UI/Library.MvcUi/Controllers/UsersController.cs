@@ -52,9 +52,12 @@ public class UsersController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Register(RegisterModel model)
+    public async Task<IActionResult> Register(RegisterInput model)
     {
-        HttpResponseMessage result = await _userApiService.RegisterAsync(model);
+        if (!ModelState.IsValid)
+            return View(model);
+
+        var result = await _userApiService.RegisterAsync(model);
 
         var response = await DeserialezeToken(result);
 
@@ -77,6 +80,9 @@ public class UsersController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(LoginModel model)
     {
+        if (!ModelState.IsValid)
+            return View(model);
+
         var result = await _userApiService.LoginAsync(model);
 
         var response = await DeserialezeToken(result);
@@ -97,7 +103,7 @@ public class UsersController : Controller
 
         ViewBag.Name = $"{user.FirstName} {user.LastName}";
 
-        return RedirectToAction("Index","Books");
+        return RedirectToAction("Index", "Books");
     }
 
     [HttpGet]

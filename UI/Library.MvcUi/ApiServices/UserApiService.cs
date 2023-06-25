@@ -31,7 +31,7 @@ public class UserApiService
         return response.Data;
     }
 
-    public async Task<HttpResponseMessage> RegisterAsync(RegisterModel model)
+    public async Task<HttpResponseMessage> RegisterAsync(RegisterInput model)
     {
         var response = await _httpClient.PostAsJsonAsync("Users/Register", model);
 

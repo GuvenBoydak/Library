@@ -1,6 +1,6 @@
 ﻿namespace Library.MvcUi.Models.User;
 
-public class RegisterModel
+public class RegisterInput
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
