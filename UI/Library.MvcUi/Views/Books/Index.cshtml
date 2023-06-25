@@ -24,7 +24,7 @@
                 <img src="@book.ImageUrl" class="card-img-top" width="400" height="250">
                 <div class="card-body">
                     <div class="badge bg-light text-dark">
-                        <h5>Kitap İsmi: <span class="badge bg-light text-dark" style="font-size: 20px;">@book.Name</span></h5>
+                        <h5>Kitap İsmi : <span class="badge bg-light text-dark" style="font-size: 20px;">@book.Name</span></h5>
                     </div>
                     <br />
                     @foreach (var category in Model.CategoryModels)
@@ -38,7 +38,7 @@
                     {
                         if (writer.Id == book.WriterId)
                         {
-                            <h6 class="badge bg-info" style="margin-left: 30px">Yazar: <span class="badge bg-light text-dark" style="font-size: 15px;">@writer.FirstName @writer.LastName</span></h6>
+                            <h6 class="badge bg-info" style="margin-left: 30px">Yazar : <span class="badge bg-light text-dark" style="font-size: 15px;">@writer.FirstName @writer.LastName</span></h6>
                         }
                     }
                     <h4 class="text-black">

@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <form asp-action="Add" asp-controller="Orders" method="post" >
                         <div class="mb-3">
-                            <label> Aldigi Tarih</label>
+                            <label> Alınan Tarih</label>
                             <input type="datetime-local" asp-for="AddOrderInput.ReceivedDate" class="form-control" />
                             <span asp-validation-for="AddOrderInput.ReceivedDate" class="text-danger"></span>
                         </div>
@@ -26,13 +26,14 @@
                             <select asp-for="AddOrderInput.BookId" asp-items="@ViewBag.book" class="form-control"></select>
                         </div>
                         <div class="mb-3">
-                            <label> Kullanici </label>
+                            <label> Kullanıcı </label>
                             <select asp-for="AddOrderInput.UserId" asp-items="@(new SelectList(Model.UserModels,"Id","FullName"))" class="form-control">
-                                <option selected="selected" value="1">Please select</option>
+                                <option selected="selected" value="1">Seçiniz</option>
                             </select>
                         </div>
                         <div>
                             <button class="btn btn-primary">Ekle</button>
+                            <a asp-action="Register" asp-controller="Users" class="btn btn-warning" style="margin-left: 90px">Kullanıcı Ekle</a>
                         </div>
                     </form>
                 </div>

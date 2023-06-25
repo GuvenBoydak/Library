@@ -23,13 +23,13 @@
                         <div class="mb-3">
                             <label> Kategori </label>
                             <select asp-for="AddBookInput.CategoryId" asp-items="@(new SelectList(Model.CategoryModels,"Id","Name"))" class="form-control">
-                                <option selected="selected" value="1">Please select</option>
+                                <option selected="selected" value="1">Seçiniz</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label> Yazar </label>
                             <select asp-for="AddBookInput.WriterId" asp-items="@(new SelectList(Model.WriterModels,"Id","FullName"))" class="form-control">
-                                <option selected="selected" value="1">Please select</option>
+                                <option selected="selected" value="1">Seçiniz</option>
                             </select>
                         </div>
                         <div >

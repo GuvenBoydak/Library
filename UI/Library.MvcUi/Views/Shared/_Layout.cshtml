@@ -17,7 +17,8 @@
             <form class="container-fluid justify-content-center">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <a class="btn btn-sm btn-outline-secondary" asp-controller="Users" asp-action="Index">Profil</a>
+                    <a class="btn btn-sm btn-outline-secondary" asp-controller="Books" asp-action="Index">Ana Sayfa</a>
+                    <a class="btn btn-sm btn-outline-secondary" asp-controller="Users" asp-action="Index" style="margin-left:15px">Profil</a>
                     <a class="btn btn-sm btn-outline-secondary" asp-controller="Users" asp-action="Logout" style="margin-left:15px">Çıkış Yap</a>
                 }
                 else
