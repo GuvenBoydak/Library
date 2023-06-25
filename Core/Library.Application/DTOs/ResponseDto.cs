@@ -4,9 +4,9 @@ namespace Library.Application.DTOs;
 
 public class ResponseDto<T>
 {
-    public T Data { get; private set; }
+    public T Data { get; set; }
 
-    public int StatusCode { get; private set; }
+    public int StatusCode { get; set; }
 
     public List<string> Errors { get; set; }
 
